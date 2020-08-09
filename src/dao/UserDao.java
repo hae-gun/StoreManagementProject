@@ -42,7 +42,7 @@ public class UserDao {
 //					User user = (User) ois.readObject();
 //					set.add(user);
 				} catch (EOFException e) {
-					System.out.println("유저정보 읽기 완료");
+//					System.out.println("유저정보 읽기 완료");
 					break;
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();

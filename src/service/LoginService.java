@@ -25,7 +25,7 @@ public class LoginService implements marketService {
 
 	public User startLogin() {
 		
-		System.out.println(userdao.getSet());
+//		System.out.println(userdao.getSet());
 
 		System.out.println("=========== Log in ===========");
 		System.out.println("ID: ");

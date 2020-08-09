@@ -32,15 +32,17 @@ public class HomeService implements marketService {
 				int menu = Integer.parseInt(scan.nextLine());
 				switch (menu) {
 				case 1:
-					System.out.println("======로그인======");
+//					System.out.println("======로그인======");
 					while (user == null) {
 						user = loginService.startLogin();
 					}
 					showMenu(user);
 					break;
 				case 2:
-					System.out.println("======회원가입======");
+//					System.out.println("======회원가입======");
 					loginService.registerUser();
+					saveData();
+					loadData();
 					break;
 				case 3:
 					System.out.println("종료");
@@ -50,7 +52,7 @@ public class HomeService implements marketService {
 					break;
 				}
 			} catch (NumberFormatException e) {
-				System.out.println("1,2,3 중 하나를 입력하세요.");
+				System.out.println("입력오류.. 다시선택하세요.");
 			}
 		}
 		exit();

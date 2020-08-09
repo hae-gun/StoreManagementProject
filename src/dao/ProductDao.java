@@ -31,7 +31,7 @@ public class ProductDao {
 					map = (HashMap<String, Product>) ois.readObject();
 					productList = (HashMap<String, String>) ois.readObject();
 				} catch (EOFException e) {
-					System.out.println("물품정보 읽기 완료");
+//					System.out.println("물품정보 읽기 완료");
 					break;
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
