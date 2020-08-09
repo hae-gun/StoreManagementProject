@@ -86,11 +86,22 @@
 
 
 
-* Object Input/Output Stream 을 이용하여 이용할 데이터를 이용함.
+* Object Input/Output Stream 을 이용하여 데이터 저장/로드 기능을 구현
 
   * EX) 유저객체 load, save
 
   ```java
+  public void saveUserList() {
+  		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/dat/users.dat"))) {
+  			oos.writeObject(set);
+  			oos.flush();
+  		} catch (FileNotFoundException e) {
+  			e.printStackTrace();
+  		} catch (IOException e) {
+  			e.printStackTrace();
+  		}
+  	}
+  
   public void loadUserList() {
   		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/dat/users.dat"))) {
   			while (true) {
@@ -110,16 +121,7 @@
   		}
   	}
   
-  public void saveUserList() {
-  		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/dat/users.dat"))) {
-  			oos.writeObject(set);
-  			oos.flush();
-  		} catch (FileNotFoundException e) {
-  			e.printStackTrace();
-  		} catch (IOException e) {
-  			e.printStackTrace();
-  		}
-  	}
+  
   ```
 
 
