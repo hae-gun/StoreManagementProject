@@ -1,4 +1,4 @@
 package testpackage;
 
-public class Test1 {
+public class Test2 {
 }
