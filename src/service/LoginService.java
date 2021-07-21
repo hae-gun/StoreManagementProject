@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 import dao.UserDao;
 import vo.Customer;
-import vo.Product;
 import vo.Seller;
 import vo.User;
 
@@ -106,7 +105,7 @@ public class LoginService implements marketService {
 	}
 
 	public void getPurchaseList(User user) {
-		userdao.parchaseList(user);
+		userdao.purchaseList(user);
 	}
 
 	public void getCustomers() {
