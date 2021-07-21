@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 import vo.Customer;
-import vo.Product;
 import vo.Seller;
 import vo.User;
 
@@ -65,24 +64,41 @@ public class UserDao {
 	}
 
 	public User login(String id, String pw) {
-		User user = new User(id, pw);
+		User result = null;
 		Iterator<User> it = set.iterator();
-		if (set.contains(user)) {
-			while (it.hasNext()) {
-				User temp = (User) it.next();
-				if (temp.getId().equals(id)) {
-					if (temp instanceof Seller) {
-						return (Seller) temp;
-					} else if (temp instanceof Customer) {
-						return (Customer) temp;
-					}
-				}
-			}
+		if (set.contains(new User(id, pw))) {
+			result = getUser(id, it);
+			if (result != null) return result;
+		}
+		return result;
+	}
+
+	private User getUser(String id, Iterator<User> it) {
+		while (it.hasNext()) {
+			User temp = (User) it.next();
+			User temp1 = idValidation(id, temp);
+			if (temp1 != null) return temp1;
 		}
 		return null;
 	}
 
-	public void parchaseList(User user) {
+	private User idValidation(String id, User temp) {
+		if (temp.getId().equals(id)) {
+			return checkUserType(temp);
+		}
+		return null;
+	}
+
+	private User checkUserType(User temp) {
+		if (temp instanceof Seller) {
+			return (Seller) temp;
+		} else if (temp instanceof Customer) {
+			return (Customer) temp;
+		}
+		return null;
+	}
+
+	public void purchaseList(User user) {
 
 		Customer custom = (Customer) user;
 		if (custom.getBuyList() == null)
